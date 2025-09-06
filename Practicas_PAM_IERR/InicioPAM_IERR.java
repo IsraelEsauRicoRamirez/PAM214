@@ -84,6 +84,7 @@ public static void MostrarFechasParciales()
 }
 public static void MostrarPorcentajeParcial()
 {
-    JOptionPane.showInputDialog("                                   1P 2P  3P\n EVIDENCIA DE CONOCIMIENTO 40% 40% 20%\n EVIDENCIA DE DESEMPEÑO 20% 20% 10%\n EVIDENCIA DE PRODUCTO 30% 20% 40%\n PROYECTO INTEGRADOR 10% 20% 30%");
+    JOptionPane.showInputDialog("                                                               1P 2P  3P\n EVIDENCIA DE CONOCIMIENTO 40% 40% 20%\n EVIDENCIA DE DESEMPEÑO 20% 20% 10%\n EVIDENCIA DE PRODUCTO 30% 20% 40%\n PROYECTO INTEGRADOR 10% 20% 30%");
 }
+ 
 }
