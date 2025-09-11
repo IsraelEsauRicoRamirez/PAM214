@@ -3,7 +3,7 @@
 'Hello World'// String
 
 
-console.log('Esto e una cadena');
+console.log('This is a string');
 10000 // Operar dentro de las aplicaciones
 1000.1// numbers
 -2.3
@@ -24,11 +24,11 @@ false
 14
 true
 
-{
-   "username": 'ryan', // clave y valor
-   "score": 70.4,// clave y valor
-   "hours": 14,// clave y valor
-   "proffesional": true// clave y valor
-}
+//{
+  // "username": 'ryan', // clave y valor
+//   "score": 70.4,// clave y valor
+//   "hours": 14,// clave y valor
+//   "proffesional": true// clave y valor
+//}
 
 
