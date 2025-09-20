@@ -28,7 +28,8 @@ const productos = [
     {nombre: 'Teclado', precio: 750},
     {nombre: 'Monitor', precio: 3000}
 ];
- 
-const productos2 = productos.filter((precio) => precio > 1000 );
-const listproduct = productos.map((nombres) => nombre == productos2);
+ // 1
+const productos2 = productos.filter(producto  => producto.precio > 1000 );
+//2
+const listproduct = productos2.map(producto => producto.nombre);
 console.log(listproduct);
