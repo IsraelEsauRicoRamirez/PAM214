@@ -1,14 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+//1. imports: Zona de importaciones.
 
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View , Button} from 'react-native';
+import React, { useState } from 'react';
+
+//2. MAIN: Zona de componentes.
 export default function App() {
+
+  const[contador, setContador]=useState(0);//Variable desestructurada
+
   return (
+    // Siempre debe ir dentro de un view para que sea vivible.
     <View style={styles.container}>
-      <Text>"HOLA MUNDOOOOO En React Native!!!"</Text>
+    
+      <Text>Contador : {contador} </Text>  
+       <Button title='Agregar' onPress={()=>setContador(contador+1)}/>
+  <Button title='Quitar' onPress={()=>setContador(contador-1)}/>
+    <Button title='Reiniciar' onPress={()=>setContador(0)}/>
+
       <StatusBar style="auto" />
     </View>
   );
 }
+
+
+//3. Estilos: Zona estetica y posicionamiento.
 
 const styles = StyleSheet.create({
   container: {
