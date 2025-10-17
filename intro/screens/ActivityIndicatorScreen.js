@@ -5,7 +5,7 @@ export default function ActivityIndicatorScreen()  {
   
     return (
       <View>
-        <Text>Proximamente.....</Text>
+        <Text>Proximamente...</Text>
       </View>
     )
   }

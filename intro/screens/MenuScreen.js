@@ -43,14 +43,14 @@ export default function MenuScreen() {
         
         <Text  style={styles.texto2}>Menu Practicas:</Text>
         <View style={styles.contenedorBotones2}>
-       <Button onPress={()=>setScreen('contador')} title='Pract:Contador'/>
-       <Button onPress={()=>setScreen('botones')} title='Pract:Buttons'/>
-       <Button onPress={()=>setScreen('TextInput')} title='Pract:TextInput'/>
-       <Button onPress={()=>setScreen('ImageBackgorund')} title='Pract:ImageBackground'/>
-       <Button onPress={()=>setScreen('ActivityIndi')} title='Pract:ActivityIndicator'/>
-       <Button onPress={()=>setScreen('FlatList')} title='Pract:FlatList'/>
-       <Button onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
-       <Button onPress={()=>setScreen('Bottom')} title='Pract:Bottom'/>
+       <Button color="#FFB86A" onPress={()=>setScreen('contador')} title='Pract:Contador'/>
+       <Button color="#FEE685"onPress={()=>setScreen('botones')} title='Pract:Buttons'/>
+       <Button color="#31C950"onPress={()=>setScreen('TextInput')} title='Pract:TextInput'/>
+       <Button color="#37BC7D" onPress={()=>setScreen('ImageBackgorund')} title='Pract:ImageBackground'/>
+       <Button color="#FF637E"onPress={()=>setScreen('ActivityIndi')} title='Pract:ActivityIndicator'/>
+       <Button color="#016630"onPress={()=>setScreen('FlatList')} title='Pract:FlatList'/>
+       <Button color="#21BCFF" onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
+       <Button color="#861043" onPress={()=>setScreen('Bottom')} title='Pract:Bottom'/>
         </View>
       </View>
     )
@@ -65,7 +65,7 @@ export default function MenuScreen() {
 const styles = StyleSheet.create({
 container2: {
     flex: 1,
-    backgroundColor: '#ECFCCA',
+    backgroundColor: '#2D9966',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -79,7 +79,7 @@ contenedorBotones2:{
   },
     texto2:{
 
-   color:'#114549ff',
+   color:'#FEF9C2',
     fontSize:30,
     fontFamily: 'Time New Roman',
     fontWeight:'bold',

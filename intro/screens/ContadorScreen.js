@@ -20,7 +20,7 @@ export default function ContadorScreen() {
 
           <Button color="#808000"   title='Agregar' onPress={()=>setContador(contador+1)}/>
           <Button color="#8f0455ff" title='Quitar' onPress={()=>setContador(contador-1)}/>
-          <Button color="#808000" title='Reiniciar' onPress={()=>setContador(0)}/>
+          <Button color="#FFDF20" title='Reiniciar' onPress={()=>setContador(0)}/>
       </View>
 
 
