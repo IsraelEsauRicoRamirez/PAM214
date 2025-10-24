@@ -13,7 +13,7 @@ export default function TextInputScreen()  {
     if ([nombre.trim() , contrasena.trim(),comentario.trim()].includes('') ){
    
       alert("Error, Por favor rellena todos los campos");
-      Alert.alert("Error","Por favor rellena todos los campos");
+      Alert.alert("Error, Por favor rellena todos los campos");
     }else {
       Alert.alert(`Hola, ${nombre}! Tu datos han sido registrado con éxito`);
       alert(`Hola, ${nombre}!, Tu datos han sido registrado con éxito . Tu contraseña es ${contrasena}`);
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#FEF9C2',
   },
   label: {
     fontSize: 20,
