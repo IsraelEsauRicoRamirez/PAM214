@@ -9,6 +9,8 @@ import ActivityIndicatorScreen from './ActivityIndicatorScreen'
 import FlatListScreen from './FlatListScreen'
 import ModalScreen from './ModalScreen'
 import BottomScreen from './BottomScreen'
+import AppIsraScreenRepaso from './AppIsraScreenRepaso'
+
 
 
 export default function MenuScreen() {
@@ -35,6 +37,8 @@ export default function MenuScreen() {
             return <ModalScreen/>
         case 'Bottom':
             return <BottomScreen/>
+        case 'Repaso':
+            return  <AppIsraScreenRepaso/>
         case 'menu':
             default:
             return (
@@ -47,10 +51,13 @@ export default function MenuScreen() {
        <Button color="#FEE685"onPress={()=>setScreen('botones')} title='Pract:Buttons'/>
        <Button color="#31C950"onPress={()=>setScreen('TextInput')} title='Pract:TextInput'/>
        <Button color="#37BC7D" onPress={()=>setScreen('ImageBackgorund')} title='Pract:ImageBackground'/>
+        <Button color="#721378" onPress={()=>setScreen('ScrollView')} title='Pract:ScrollView'/>
        <Button color="#FF637E"onPress={()=>setScreen('ActivityIndi')} title='Pract:ActivityIndicator'/>
        <Button color="#016630"onPress={()=>setScreen('FlatList')} title='Pract:FlatList'/>
        <Button color="#21BCFF" onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
        <Button color="#861043" onPress={()=>setScreen('Bottom')} title='Pract:Bottom'/>
+
+        <Button color="#721378" onPress={()=>setScreen('Repaso')} title='Pract:Repaso'/>
         </View>
       </View>
     )

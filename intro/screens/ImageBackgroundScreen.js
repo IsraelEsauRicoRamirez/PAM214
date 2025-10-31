@@ -38,6 +38,7 @@ if(showSplash){
     source={{
       uri: 'https://wallpapercave.com/wp/wp3850825.jpg',
     }}
+    
     style={styles.background}
     >
 
