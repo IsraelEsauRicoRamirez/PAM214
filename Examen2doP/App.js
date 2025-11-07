@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View , SafeAreaView, ImageBackground, Button, Alert, } from 'react-native';
+import { StyleSheet, Text, View , SafeAreaView, ImageBackground, Button, Alert, ScrollView} from 'react-native';
 import React, {useState, useEffect} from 'react';
 
 export default function App() {
 const [showSplash, setShowSplash] = useState(true);
+const [alerta, setAlerta] = useState('')
 
  useEffect(() => {
   
@@ -32,14 +33,20 @@ const [showSplash, setShowSplash] = useState(true);
       );
     }
   return (
-
     <SafeAreaView style={{flex: 1}}>
+    
+
+     
+       
+
+    
       <ImageBackground
       
       source={{ uri:'https://st.depositphotos.com/1695227/4813/i/450/depositphotos_48132517-stock-photo-deep-forest-stream-with-crystal.jpg',}}
        style = {styles.background}
       >
-       
+       <ScrollView
+      showsVerticalScrollIndicator={false}>
 
 
 
@@ -61,12 +68,27 @@ const [showSplash, setShowSplash] = useState(true);
 
 
 
+        <Button
+        title="Editar Perfil"
+      
+        color="#1F7A55"
+        onPress={()=>setAlerta(  
+          alert(`Elige: <Button title="Guardar" color="#1F7A55"/> , <Button  title="Cancelar" color="#1F7A55"/>`),
+          Alert.alert(`Elige: ,<Button title="Guardar" color="#1F7A55"/> , <Button  title="Cancelar" color="#1F7A55"/>`))}
+
+        />
+
+
+
 
 
       <StatusBar style="auto" />
     </View>
+    </ScrollView>
     </ImageBackground>
-    </SafeAreaView>
+ 
+    
+       </SafeAreaView>
   );
 }
 
@@ -107,7 +129,7 @@ const styles = StyleSheet.create({
      backgroundColor: '#1a181896', 
   padding: 20,
   borderRadius: 15,
-  width: '90%',
+  width: '100%',
   shadowColor: '#000',
   shadowOffset: { width: 0, height: 4 },
   shadowOpacity: 0.3,
@@ -120,7 +142,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
     textAlign: 'center',
-    color: '#cbffcaff'
+    color: '#1F7A55'
   },
   Subtitulos:{
       fontSize: 20,
@@ -132,7 +154,7 @@ const styles = StyleSheet.create({
   Texto:{
      fontSize: 18,
       fontWeight: 'bold',
-      marginBottom: 5,
+      marginBottom: 120,
        color: '#ffffffff', 
        fontFamily:'Arial'
 
