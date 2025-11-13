@@ -2,7 +2,7 @@ import { Text, StyleSheet, View, Pressable, TouchableOpacity, RefreshControl } f
 import { useState } from "react";
 import { Switch, TouchableWithoutFeedback, ScrollView} from 'react-native';
 
-export default function ScrollView(){
+export default function ScrollViewScreen(){
   const [accion, setAccion] = useState('nada');
   const [isDisabled, setDisabled] = useState(false);
    const [refreshing, setRefreshing] = useState(false);
