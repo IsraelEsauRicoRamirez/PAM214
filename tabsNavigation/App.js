@@ -1,12 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Home from './screens/home';
 import Profile from './screens/profile';
 import Settings from './screens/settings';
+import Detalle from './screens/detalle';
 
 const Tab = createBottomTabNavigator();
+
 
 export default function App() {
   return (
@@ -37,10 +41,22 @@ export default function App() {
           },
         })}
       >
+
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Profile" component={ProfileStackScreen} />
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
+     
     </NavigationContainer>
+  );
+}
+const ProfileStack = createNativeStackNavigator();
+
+function ProfileStackScreen() {
+  return (
+    <ProfileStack.Navigator initialRouteName="Profile">
+      <ProfileStack.Screen name="Profile" component={Profile} />
+      <ProfileStack.Screen name="Detalle" component={Detalle} />
+    </ProfileStack.Navigator>
   );
 }
