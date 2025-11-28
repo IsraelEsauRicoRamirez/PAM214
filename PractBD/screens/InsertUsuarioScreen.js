@@ -11,8 +11,11 @@ export default function UsuarioView() {
   const [nombre, setNombre] = useState('');
   const [loading, setLoading] = useState(true);
   const [guardando, setGuardando] = useState(false);
+ const [editandoId, setEditandoId] = useState(null);
+const [nuevoNombre, setNuevoNombre] = useState('');
 
-// SELECT - Cargar usuarios desde la BD
+
+
 const cargarUsuarios = useCallback(async () => {
   try {
     setLoading(true);
@@ -40,7 +43,56 @@ useEffect(() => {
     controller.removeListener(cargarUsuarios);
   };
 }, [cargarUsuarios]);
+
+
+const handleEliminar = (id) => {
+  if (Platform.OS === 'web') {
+    const confirmar = window.confirm('¿Estás seguro de que deseas eliminar este usuario?');
+    if (!confirmar) return;
+    controller.eliminarUsuario(id)
+      .then(() => Alert.alert('Usuario eliminado'))
+      .catch((error) => Alert.alert('Error', error.message));
+  } else {
+    Alert.alert(
+      'Confirmar eliminación',
+      '¿Estás seguro de que deseas eliminar este usuario?',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Eliminar',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await controller.eliminarUsuario(id);
+              Alert.alert('Usuario eliminado');
+            } catch (error) {
+              Alert.alert('Error', error.message);
+            }
+          },
+        },
+      ]
+    );
+  }
+};
+
+const confirmarEdicion = async () => {
+  if (!nuevoNombre.trim()) {
+    Alert.alert('Error', 'El nombre no puede estar vacío');
+    return;
+  }
+  try {
+    await controller.actualizarUsuario(editandoId, nuevoNombre.trim());
+    Alert.alert('Usuario actualizado');
+    setEditandoId(null);
+    setNuevoNombre('');
+  } catch (error) {
+    Alert.alert('Error', error.message);
+  }
+};
+
+
 // INSERT - Agregar nuevo usuario
+
 const handleAgregar = async () => {
   if (guardando) return;
   try {
@@ -71,20 +123,71 @@ const renderUsuario = ({ item, index }) => (
         })}
       </Text>
     </View>
+<View style={{ flexDirection: 'row', marginTop: 10 }}>
+  <TouchableOpacity onPress={() => {
+    setEditandoId(item.id);
+    setNuevoNombre(item.nombre);
+  }}>
+    <Text style={{ color: '#1976D2', marginRight: 15 }}>Editar</Text>
+  </TouchableOpacity>
+  <TouchableOpacity onPress={() => handleEliminar(item.id)}>
+    <Text style={{ color: 'red' }}>Eliminar</Text>
+  </TouchableOpacity>
+</View>
+
+
+
   </View>
+
+  
 );
+
+
+
   return (
     
     <View style={styles.container}>
+      {editandoId !== null && (
+  <View style={{
+    position: 'absolute',
+    top: '30%',
+    left: '10%',
+    right: '10%',
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 12,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    zIndex: 10,
+  }}>
+    <Text style={{ fontSize: 16, marginBottom: 10 }}>Editar nombre</Text>
+    <TextInput
+      style={styles.input}
+      value={nuevoNombre}
+      onChangeText={setNuevoNombre}
+      placeholder="Nuevo nombre"
+    />
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
+      <TouchableOpacity onPress={() => setEditandoId(null)}>
+        <Text style={{ color: 'red' }}>Cancelar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={confirmarEdicion}>
+        <Text style={{ color: '#0cd316ff' }}>Guardar</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+)}
 
-      {/* Zona del encabezado */}
+      
 
       <Text style={styles.title}> INSERT & SELECT</Text>
       <Text style={styles.subtitle}>
         {Platform.OS === 'web' ? ' WEB (LocalStorage)' : ` ${Platform.OS.toUpperCase()} (SQLite)`}
       </Text>
 
-      {/* Zona del INSERT */}
+      
 
       <View style={styles.insertSection}>
         <Text style={styles.sectionTitle}> Insertar Usuario</Text>
@@ -112,7 +215,7 @@ const renderUsuario = ({ item, index }) => (
 
 
 
-      {/* Zona del SELECT */}
+      
 
       <View style={styles.selectSection}>
 

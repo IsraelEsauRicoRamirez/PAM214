@@ -55,6 +55,37 @@ async add(nombre) {
     };
   }
 }
+async update(id, nuevoNombre) {
+  if (Platform.OS === 'web') {
+    const usuarios = await this.getAll();
+    const index = usuarios.findIndex(u => u.id === id);
+    if (index !== -1) {
+      usuarios[index].nombre = nuevoNombre;
+      localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
+      return usuarios[index];
+    }
+    throw new Error('Usuario no encontrado');
+  } else {
+    await this.db.runAsync(
+      'UPDATE usuarios SET nombre = ? WHERE id = ?',
+      nuevoNombre,
+      id
+    );
+    return { id, nombre: nuevoNombre };
+  }
+}
+
+async remove(id) {
+  if (Platform.OS === 'web') {
+    const usuarios = await this.getAll();
+    const nuevos = usuarios.filter(u => u.id !== id);
+    localStorage.setItem(this.storageKey, JSON.stringify(nuevos));
+    return true;
+  } else {
+    await this.db.runAsync('DELETE FROM usuarios WHERE id = ?', id);
+    return true;
+  }
+}
 }
 // Exportar instancia de la clase
 export default new DatabaseService();
